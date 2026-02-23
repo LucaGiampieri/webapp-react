@@ -1,8 +1,10 @@
+import MainHeader from "./components/MainHeader"
+
 function App() {
 
   return (
     <>
-      <h1>aaaa</h1>
+      <MainHeader />
     </>
   )
 }
