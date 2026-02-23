@@ -11,6 +11,10 @@
 
 /* Generics */
 
+body {
+  background-color: #BAC7E3;
+}
+
 a {
   text-decoration: none;
 }
@@ -43,4 +47,29 @@ a {
   font-size: 2rem;
   padding: 1rem;
   font-weight: bold;
+}
+
+/* HomePage */
+
+.home-title-container {
+  text-align: center;
+  padding: 1rem;
+  font-family: "Story Script", sans-serif;
+}
+
+.home-title {
+  font-size: 4rem;
+  color: #4B5563;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+}
+
+.home-card-container {
+  padding: 2rem;
+  border: 2px solid #4B5563;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
