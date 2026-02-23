@@ -1,6 +1,9 @@
 //import Link di connessione rotte
 import { Link } from "react-router-dom"
 
+//import CardReview
+import CardReview from "../components/CardReview"
+
 function MoviePage() {
 
     return (
@@ -20,6 +23,7 @@ function MoviePage() {
                     </div>
                 </div>
             </div>
+            <CardReview />
 
 
 

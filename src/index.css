@@ -69,9 +69,42 @@ a {
 .home-card-container {
   padding: 2rem;
   border: 2px solid #4B5563;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* CardMovie */
+
+.card-movie {
+  flex-basis: calc((100% - 6rem)/3);
+
+}
+
+.card-movie-img {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 60px;
+}
+
+.card-movie-title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-movie-title {
+  color: black;
+  font-weight: bold;
+  font-family: "Story Script", sans-serif;
+  font-size: 2rem;
+}
+
+.card-movie-director {
+  text-align: center;
+  color: #4B5563;
 }
 
 /* MoviePage */
