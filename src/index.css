@@ -153,7 +153,43 @@ a {
 }
 
 .movie-back-btn {
-  padding: 1rem;
+  padding: 0.5rem;
   color: #4B5563;
+  font-size: 1.5rem;
+  border: 1px solid #4B5563;
+  border-radius: 10px;
+}
+
+.movie-review-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.movie-title-review {
+  font-size: 2rem;
+  font-family: "Story Script", sans-serif;
+  color: #4B5563;
+}
+
+/* CardReview */
+
+.card-review-container {
+  margin-top: 1rem;
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: "Story Script", sans-serif;
+}
+
+.card-review-name-vote-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  color: #4B5563;
+}
+
+.card-review-text {
+  padding: 1rem 0;
   font-size: 1.5rem;
 }
