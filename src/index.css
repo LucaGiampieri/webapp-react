@@ -9,6 +9,26 @@
   box-sizing: border-box;
 }
 
+/* Generics */
+
+a {
+  text-decoration: none;
+}
+
+/* Not Found */
+
+.notfound-title {
+  font-size: 8rem;
+}
+
+.notfound-link {
+  display: block;
+  font-size: 4rem;
+  margin-top: 4rem;
+  text-align: end;
+  margin-right: 3rem;
+}
+
 /* Header - Navbar  */
 
 .navbar {
