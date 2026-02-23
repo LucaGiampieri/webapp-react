@@ -1,10 +1,11 @@
-import MainHeader from "./components/MainHeader"
+//import layout
+import DefaultLayout from "./layouts/DefaultLayouts"
 
 function App() {
 
   return (
     <>
-      <MainHeader />
+      <DefaultLayout />
     </>
   )
 }
