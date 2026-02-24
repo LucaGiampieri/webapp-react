@@ -1,24 +1,58 @@
-//import Link di connessione rotte
-import { Link } from "react-router-dom"
+//import axios
+import axios from "axios";
+
+//import useState e useEffect
+import { useState, useEffect } from "react";
+
+//import Link di connessione rotte, useParams e useNavigate
+import { Link, useParams, useNavigate } from "react-router-dom"
 
 //import CardReview
 import CardReview from "../components/CardReview"
 
 function MoviePage() {
 
+    //creazione varibile endpoint in un salvare l'API
+    const endpoint = "http://localhost:3000/api/movies/";
+
+    //ricaviamo l'id dall'url di rotta
+    const { id } = useParams();
+
+    //creiamo una varibile di stato come un oggetto vuoto
+    const [movie, setMovie] = useState({});
+
+    //creiamo una funzione per gestire la chiamta axios alla rotta show
+    function fetchMovie() {
+        axios.get(endpoint + id)
+            .then(res => { setMovie(res.data) })
+            .catch(err => {
+                console.log(err);
+            })
+
+        console.log(movie);
+
+    };
+
+    //richiamiamo la funzione fetchMovie (una sola volta) al motnaggio della pagine grazie ad useEffect
+    useEffect(fetchMovie, []);
+
     return (
         <>
             <main>
                 <div className="movie-container">
                     <div className="movie-img-container">
-                        <img className="movie-img" src="https://pad.mymovies.it/filmclub/2002/06/038/locandina.jpg" alt="Metropolis" />
+                        <img className="movie-img" src={`/movies_cover/${movie.image}`} alt={movie.title} />
                     </div>
                     <div className="movie-description-container">
-                        <h1 className="movie-title">Metropolis</h1>
-                        <h2 className="movie-director">Directed by Fritz Lang</h2>
-                        <p className="movie-description">
-                            Set in a futuristic, dystopian city in the year 2026, Metropolis depicts a sharply stratified society. The wealthy elite live in luxury in skyscrapers and "Pleasure Gardens" above ground, while the working class toils in an underground, dark industrial city, operating the machinery that powers the upper world.
-                        </p>
+                        <div>
+                            <h1 className="movie-title">{movie.title}</h1>
+                            <h2 className="movie-director">Directed by {movie.director}</h2>
+                            <h3>Relase year: {movie.release_year}</h3>
+                            <h3>Genre: {movie.genre}</h3>
+                            <p className="movie-description">
+                                {movie.abstract}
+                            </p>
+                        </div>
                         <div className="movie-back-btn-container">
                             <Link className="movie-back-btn" to="/">Back to home</Link>
                         </div>
@@ -26,8 +60,6 @@ function MoviePage() {
                 </div>
                 <div className="movie-review-container">
                     <h3 className="movie-title-review">Our community reviews</h3>
-                    <CardReview />
-                    <CardReview />
                     <CardReview />
                 </div>
             </main>

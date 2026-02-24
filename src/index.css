@@ -135,6 +135,9 @@ a {
 .movie-description-container {
   flex-basis: 70%;
   font-family: "Story Script", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-title {
@@ -153,6 +156,7 @@ a {
 .movie-back-btn-container {
   display: flex;
   justify-content: end;
+
 }
 
 .movie-back-btn {
