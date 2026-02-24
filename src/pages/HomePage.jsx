@@ -28,8 +28,6 @@ function HomePage() {
     //richiamiamo la funzione fetchMovies (una sola volta) al motnaggio della pagine grazie ad useEffect
     useEffect(fetchMovies, []);
 
-
-
     return (
         <main>
             <div className="home-title-container">
@@ -37,11 +35,13 @@ function HomePage() {
                 <h2 className="home-subtitle">The boolean nerd movie community</h2>
             </div>
             <div className="home-card-container">
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
+                {movies.map(movie => {
+                    return (< CardMovie
+                        key={movie.id}
+                        movie={movie}
+                    />
+                    )
+                })}
             </div>
         </main>
     )
