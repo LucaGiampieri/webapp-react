@@ -18,6 +18,9 @@ function MoviePage() {
     //ricaviamo l'id dall'url di rotta
     const { id } = useParams();
 
+    //salviamo un'istanza di useNavigate per poterlo poi utilizzare 
+    const redirect = useNavigate();
+
     //creiamo una varibile di stato come un oggetto vuoto
     const [movie, setMovie] = useState({});
 
@@ -27,6 +30,9 @@ function MoviePage() {
             .then(res => { setMovie(res.data) })
             .catch(err => {
                 console.log(err);
+                if (err.response.status === 404) {
+                    redirect('/404');
+                }
             })
 
         console.log(movie);
@@ -60,7 +66,13 @@ function MoviePage() {
                 </div>
                 <div className="movie-review-container">
                     <h3 className="movie-title-review">Our community reviews</h3>
-                    <CardReview />
+                    {movie.reviews?.map(review => {
+                        return (
+                            <CardReview
+                                key={review.id}
+                                review={review} />
+                        )
+                    })}
                 </div>
             </main>
         </>
