@@ -9,7 +9,7 @@ function NotFound() {
             <Link
                 className="notfound-link"
                 to="/" >
-                Torna alla home
+                Back to home
             </Link>
         </>
     )
