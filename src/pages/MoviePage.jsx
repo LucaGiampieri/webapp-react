@@ -47,7 +47,7 @@ function MoviePage() {
             <main>
                 <div className="movie-container">
                     <div className="movie-img-container">
-                        <img className="movie-img" src={`/movies_cover/${movie.image}`} alt={movie.title} />
+                        <img className="movie-img" src={movie.image} alt={movie.title} />
                     </div>
                     <div className="movie-description-container">
                         <div>

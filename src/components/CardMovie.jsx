@@ -7,7 +7,7 @@ function CardMovie(props) {
     return (
         <>
             <div className="card-movie">
-                <img className="card-movie-img" src={`/movies_cover/${image}`} alt={title} />
+                <img className="card-movie-img" src={image} alt={title} />
                 <div className="card-movie-title-container">
                     <Link to={`/movie/${id}`} className="card-movie-title">{title}</Link>
                 </div>

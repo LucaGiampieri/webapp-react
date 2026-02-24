@@ -84,11 +84,11 @@ a {
 
 .card-movie {
   flex-basis: calc((100% - 6rem)/3);
-
 }
 
 .card-movie-img {
   width: 100%;
+  max-height: 80%;
   border: 2px solid black;
   border-radius: 60px;
 }
