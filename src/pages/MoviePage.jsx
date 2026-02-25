@@ -10,6 +10,9 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 //import CardReview
 import CardReview from "../components/CardReview"
 
+//import ReviewForm
+import ReviewForm from "../components/ReviewForm";
+
 function MoviePage() {
 
     //creazione varibile endpoint in un salvare l'API
@@ -73,6 +76,7 @@ function MoviePage() {
                                 review={review} />
                         )
                     })}
+                    <ReviewForm />
                 </div>
             </main>
         </>
