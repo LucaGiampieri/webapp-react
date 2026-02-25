@@ -12,12 +12,15 @@ function ReviewForm(props) {
     //salviamo l'url API in una costante (con id dinamico)
     const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`;
 
-    //creiamo una varibile di stato per inserire i dati di input del form
-    const [formData, setFormData] = useState({
+    //creiamo una variabile per i valori di defaul iniziali e a cui dobbiamo tornarnare dopo submit
+    const initialFormData = {
         name: "",
         text: "",
         vote: ""
-    });
+    }
+
+    //creiamo una varibile di stato per inserire i dati di input del form
+    const [formData, setFormData] = useState(initialFormData);
 
     //creiamo una funzione per gestire i dati del form all'invio
     function setFieldValue(e) {
@@ -33,7 +36,12 @@ function ReviewForm(props) {
         e.preventDefault();
         //chimata all'endpoint axios
         axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
-            .then(() => { console.log("Call successful") })
+            .then(() => {
+                //svuotiamo i campi del form
+                setFormData(initialFormData);
+
+                console.log("Call successful")
+            })
             .catch((err) => {
                 console.log(err);
             })
