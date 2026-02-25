@@ -79,6 +79,7 @@ function MoviePage() {
                     <h2 className="movie-review-title-form">Add your review here:</h2>
                     <ReviewForm
                         movie_id={movie.id}
+                        reloadReviews={fetchMovie}
                     />
                 </div>
             </main>

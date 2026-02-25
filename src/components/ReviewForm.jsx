@@ -7,7 +7,7 @@ import { useState } from "react";
 function ReviewForm(props) {
 
     //ricaviamo in prop l'id del film
-    const { movie_id } = props;
+    const { movie_id, reloadReviews } = props;
 
     //salviamo l'url API in una costante (con id dinamico)
     const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`;
@@ -37,10 +37,11 @@ function ReviewForm(props) {
         //chimata all'endpoint axios
         axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
             .then(() => {
+                console.log("Call successful")
                 //svuotiamo i campi del form
                 setFormData(initialFormData);
-
-                console.log("Call successful")
+                //funzione per richiamre la chiamta axios all'invio del submit per vedere l'aggiunta della review
+                reloadReviews();
             })
             .catch((err) => {
                 console.log(err);
