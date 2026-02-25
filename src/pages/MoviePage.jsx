@@ -76,7 +76,10 @@ function MoviePage() {
                                 review={review} />
                         )
                     })}
-                    <ReviewForm />
+                    <h2 className="movie-review-title-form">Add your review here:</h2>
+                    <ReviewForm
+                        mvie_id={movie.id}
+                    />
                 </div>
             </main>
         </>
