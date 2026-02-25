@@ -16,22 +16,42 @@ function ReviewForm(props) {
     const [formData, setFormData] = useState({
         name: "",
         text: "",
-        vote: null
+        vote: ""
     });
 
+    //creiamo una funzione per gestire i dati del form all'invio
+    function setFieldValue(e) {
+        setFormData((formData) => ({
+            ...formData,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    //creiamo una funzione per gestire il submit del form e aggiunta dei dati al DB
+    function handleSubmit(e) {
+        //preveniamo il refresh della pagina
+        e.preventDefault();
+        //chimata all'endpoint axios
+        axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
+            .then(() => { console.log("Call successful") })
+            .catch((err) => {
+                console.log(err);
+            })
+    };
+
     return (
-        <form className="review-form" >
+        <form className="review-form" onSubmit={handleSubmit} >
             <div className="review-form-separator">
                 <label>Name</label>
-                <input type="text" name="name" className="review-form-name" value={formData.name} placeholder="Enter your name" required />
+                <input type="text" name="name" className="review-form-name" value={formData.name} placeholder="Enter your name" onChange={setFieldValue} required />
             </div>
             <div className="review-form-separator">
                 <label>Review</label>
-                <textarea className="review-form-text" name="text" value={formData.text} placeholder="Enter your review here" required />
+                <textarea className="review-form-text" name="text" value={formData.text} placeholder="Enter your review here" onChange={setFieldValue} required />
             </div>
             <div className="review-form-separator">
                 <label>Voto</label>
-                <input type="number" name="vote" min="1" max="5" className="reviwe-form-vote" value={formData.vote} placeholder="Enter your vote here" required />
+                <input type="number" name="vote" min="1" max="5" className="reviwe-form-vote" value={formData.vote} placeholder="Enter your vote here" onChange={setFieldValue} required />
             </div>
             <div className="review-form-separator">
                 <button type="submit" className="review-form-btn" >Send your review</button>
