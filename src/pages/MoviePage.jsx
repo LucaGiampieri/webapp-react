@@ -4,6 +4,9 @@ import axios from "axios";
 //import useState e useEffect
 import { useState, useEffect } from "react";
 
+//import useGlobal
+import { useGlobal } from "../context/GlobalContext";
+
 //import Link di connessione rotte, useParams e useNavigate
 import { Link, useParams, useNavigate } from "react-router-dom"
 
@@ -14,6 +17,9 @@ import CardReview from "../components/CardReview"
 import ReviewForm from "../components/ReviewForm";
 
 function MoviePage() {
+
+    //importiamo gli elementi che ci servono tramite la useContext
+    const { setIsLoading } = useGlobal();
 
     //creazione varibile endpoint in un salvare l'API
     const endpoint = "http://localhost:3000/api/movies/";
@@ -29,6 +35,10 @@ function MoviePage() {
 
     //creiamo una funzione per gestire la chiamta axios alla rotta show
     function fetchMovie() {
+
+        //facciamo in modo che all'avvio della chiamata la varibile di stato cambi in true e parta il Loader
+        setIsLoading(true)
+
         axios.get(endpoint + id)
             .then(res => { setMovie(res.data) })
             .catch(err => {
@@ -37,6 +47,11 @@ function MoviePage() {
                     redirect('/404');
                 }
             })
+            //facciamo in modo che a chiamta effettuata la varibile di stato torni false e scompaia il Loader
+            .finally(() => {
+                //metto questi secondi per verificare che funzioni
+                setTimeout(() => setIsLoading(false), 1000);
+            });
 
         console.log(movie);
 
