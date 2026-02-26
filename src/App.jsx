@@ -1,8 +1,11 @@
-//import layout
-import DefaultLayout from "./layouts/DefaultLayouts"
-
 //import libreria rotte
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+//import del GlobalProvider
+import { GlobalProvider } from "./context/GlobalContext"
+
+//import layout
+import DefaultLayout from "./layouts/DefaultLayouts"
 
 //import pagine della rotta
 import HomePage from "./pages/HomePage"
@@ -12,7 +15,7 @@ import NotFound from "./pages/NotFound"
 function App() {
 
   return (
-    <>
+    <GlobalProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
@@ -22,7 +25,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </GlobalProvider>
   )
 }
 
